@@ -1,8 +1,14 @@
 # Pillow Image Library
 from PIL import Image, ImageDraw, ImageFilter, ImageEnhance
 
+# Random # generation for file names
+from random import seed
+from random import randint
+
 # Requests library for Downloading URL
 import requests
+
+seed(8008)
 
 def draw(name):
     # Imported album art
@@ -48,13 +54,13 @@ def draw(name):
         draw.line((599, x, 800, x), fill=color, width=1, joint=None)
 
     # Blur image
-    bg = bg.filter(ImageFilter.GaussianBlur(75))
+    bg = bg.filter(ImageFilter.GaussianBlur(85))
 
     # Paste image back over blur
     bg.paste(im, (200,200))
 
     bg.show()
-    bg.save('output.jpg', quality=100, subsampling=0)
+    bg.save('./output/' + str(randint(0, 9999999)) + '.jpg', quality=95, subsampling=0)
 
 def draw_url(url):
     # Download Image using Requests
