@@ -9,8 +9,13 @@ from spotify_func import *
 # Drawing functions
 from drawing_func import *
 
+# Set Spotify credentials
 client_id = os.getenv("CLIENT_ID")
 client_secret = os.getenv("CLIENT_SECRET")
+
+# Create output folder if it doesn't exist
+if not os.path.exists('./output'):
+    os.makedirs('./output')
 
 if len(client_id) != 0:
     print("Using Spotify")
